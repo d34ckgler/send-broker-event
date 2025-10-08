@@ -1,0 +1,37 @@
+# Binarios
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+send-broker-event
+
+# Archivos de test
+*.test
+*.out
+
+# Dependencias de Go
+vendor/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

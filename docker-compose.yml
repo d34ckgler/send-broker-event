@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  send-broker-event:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: send-broker-event
+    # Configuración de red (ajusta según tus necesidades)
+    networks:
+      - broker-network
+    # Variables de entorno (sobrescriben las del .env)
+    environment:
+      - CENTRAL_RABBITPROTOCOL=amqp
+      - CENTRAL_RABBITHOST=192.168.30.55
+      - CENTRAL_RABBITPORT=5673
+      - CENTRAL_RABBITUSER=central
+      - CENTRAL_RABBITPASS=0b3L15c0
+      - CENTRAL_RABBITVHOST=/
+      - CENTRAL_RABBITEXCHANGE=client.rabbit.products
+      - CENTRAL_RABBITEXCHANGEKEY=info.products
+      - CENTRAL_RABBITQUEUE=product.sync
+    # Reiniciar automáticamente si el contenedor falla
+    restart: unless-stopped
+    # Volumen para logs (opcional)
+    volumes:
+      - ./logs:/app/logs
+
+networks:
+  broker-network:
+    driver: bridge
