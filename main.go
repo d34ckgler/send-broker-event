@@ -135,6 +135,9 @@ func init() {
 
 	err = envconfig.Process("CENTRAL", &config)
 	failOnError(err, "Cannot load .env file")
+
+	os.Setenv("TZ", "America/Caracas")
+	time.Local = time.FixedZone("VET", -4*60*60)
 }
 
 func main() {
